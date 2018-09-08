@@ -1,0 +1,19 @@
+version: '3'
+services:
+  jupyter:
+    build: .
+      #context: ./
+      #dockerfile: dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./:/home/jovyan/work
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - pgdata:/var/lib/postgressql/data
+    ports:
+      - "5432:5432"
+volumes:
+  pgdata:
